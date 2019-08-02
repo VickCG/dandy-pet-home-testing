@@ -1,0 +1,48 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="red">
+    <h1 class="shape">
+      Dandy
+    </h1>
+  </div>
+</div>
+<div style="position: relative">
+  <div class="rectangle-copy-12" fxFlexOffset="5%">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div>
+        <img src="assets/img/wave-0.jpg"
+             srcset="assets/img/wave-0@2x.jpg 2x,
+                   assets/img/wave-0@3x.jpg 3x"
+             class="Wave-0">
+      </div>
+      <div class="Question-Wrap">
+        <p class="Question">
+          What breed is Milly?
+        </p>
+        <p class="Additional-Copy">
+          If you’re not sure, just select unknown (the love’s the same).
+        </p>
+      </div>
+      <div style="margin-top: 70px">
+        <form>
+          <mat-form-field>
+            <input class="Golden-Corgiver" type="text" placeholder="Select breed" [(ngModel)]="breedSelected" (keyup.enter)="keyUpHandle()" aria-label="Number" matInput [formControl]="formControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                <span class="Table-Item">{{option}}</span>
+              </mat-option>
+                <div class="Rectangle" *ngIf="filteredLength < 3">
+                  <p class="No-results-found-Pr">
+                    No results found. Press enter to add your dogs unique breed or select multiple breeds.
+                  </p>
+                </div>
+            </mat-autocomplete>
+          </mat-form-field>
+          <!--<div class="Rectangle" *ngIf="(filteredOptions| async)?.length < 3">No results found. Press enter to add your dogs unique breed or select multiple breeds.</div>-->
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="rectangle-copy-11" fxFlexOffset="5%"></div>
+</div>
+
+<router-outlet></router-outlet>
